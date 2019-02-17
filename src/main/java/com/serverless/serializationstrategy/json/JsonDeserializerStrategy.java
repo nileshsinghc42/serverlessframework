@@ -5,9 +5,8 @@ import com.serverless.exceptions.InternalServerErrorException;
 import com.serverless.serializationstrategy.DeserializerStrategy;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.io.IOException;
-import java.util.Optional;
+
 
 public class JsonDeserializerStrategy implements DeserializerStrategy
 {
@@ -20,7 +19,7 @@ public class JsonDeserializerStrategy implements DeserializerStrategy
     }
 
     @Override
-    public <T> Optional<T>  deserialize(String content, Class<T> entityClass) throws InternalServerErrorException
+    public <T> T  deserialize(String content, Class<T> entityClass) throws InternalServerErrorException
     {
         T deserializeEntity=null;
         try
@@ -31,6 +30,6 @@ public class JsonDeserializerStrategy implements DeserializerStrategy
             LOG.error(String.format("Internal server error {0}",e.getStackTrace()));
             throw new InternalServerErrorException(e.getMessage());
         }
-        return Optional.ofNullable(deserializeEntity);
+        return deserializeEntity;
     }
 }

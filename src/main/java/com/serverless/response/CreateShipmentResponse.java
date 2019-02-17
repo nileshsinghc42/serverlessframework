@@ -1,6 +1,6 @@
 package com.serverless.response;
 
-public class ApiIntegrationResponse
+public class CreateShipmentResponse
 {
 
 }
